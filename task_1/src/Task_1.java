@@ -89,7 +89,8 @@ public class Task_1 implements Task_1_base {
     public int subtask_7_if(double vx, double vy, double vz, double speed, double time, double wall) {
         if (speed <= 0 || time <= 0) {
             return 2;
-        } else {
+        } 
+        else {
             if (vx != 0) {
                 double y1 = vy * (wall / vx);
                 double x1 = vx * (wall / vx);
@@ -100,7 +101,7 @@ public class Task_1 implements Task_1_base {
                     return 1;
                 }
             }
-            return 0
+            return 0;
         }
     }
     @Override
