@@ -121,6 +121,7 @@ public class Task_6_Tests {
             "getPassword",
             "getScheme",
             "isValid",
+            "getPort",
             "getHost",
             "getUrl",
             "getParameters",
@@ -337,7 +338,7 @@ public class Task_6_Tests {
         args_1.put("access", "private");
         args_1.put("link", "global");
         var args_2 = new HashMap<String, String>();
-        args_1.put("account", "guest");
+        args_2.put("account", "guest");
 
         boolean[] results = new boolean[]{
             testObject2(new WebAddressParser("dfgvslksdfmvsdkg"), "", "", "", false, "", "", "", new HashMap<>(), ""),
