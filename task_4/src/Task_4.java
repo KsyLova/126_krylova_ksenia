@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Task_4 implements Task_4_base {
     @Override
     public int[] subtask_1_arrays(int size, int a0, int d) {
@@ -74,9 +75,17 @@ public class Task_4 implements Task_4_base {
         // Даны два массива arr1, arr2.
         // Произвести слияние данных массивов в один отсортированный
         // по возрастанию массив.
-
-        return null;
+        int[] sorta = new int[arr1.length + arr2.length];
+        for (int i = 0; i < arr1.length; i++) {
+            sorta[i] = arr1 [i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            sorta[arr1.length + i] = arr2 [i];
+        }
+        Arrays.sort(sorta);
+        return sorta;
     }
+
 
     @Override
     public int[] subtask_7_arrays(int[] arr1, int[] arr2) {
@@ -85,6 +94,6 @@ public class Task_4 implements Task_4_base {
         // по возрастанию массив.
         // Используйте алгоритм, время работы которого будет пропорционально сумме
         // размеров arr1 и arr2, а не их произведению
-
         return null;
-    }}
+    }
+}
