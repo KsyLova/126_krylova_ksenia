@@ -1,6 +1,6 @@
 package task;
 
-import test.Task_6_Tests;
+import test.Task_7_Tests;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class Runner {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите свое фамилию и имя");
         String name = scanner.nextLine();
-        Task_6 task = new Task_6();
-        Task_6_Tests.test(task, name);
+        Task_7 task = new Task_7();
+        Task_7_Tests.test(task, name);
     }
 }
