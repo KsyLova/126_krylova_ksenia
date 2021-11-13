@@ -87,21 +87,27 @@ public class Task_1 implements Task_1_base {
     }
     @Override
     public int subtask_7_if(double vx, double vy, double vz, double speed, double time, double wall) {
-        if (speed <= 0 || time <= 0) {
-            return 2;
-        } 
-        else {
-            if (vx != 0) {
-                double y1 = vy * (wall / vx);
-                double x1 = vx * (wall / vx);
-                double len = Math.sqrt(y1 * y1 + x1 * x1 + wall * wall);
-                if (Math.abs(len / speed - time) > 0.000001) {
-                    return 0;
-                } else {
-                    return 1;
-                }
+        // Проверить, достигнет ли снаряд, летяший из точки (0, 0, 0)
+        // в направлении (vx, vy, vz) со скоростью speed стены, параллельной плоскости OYZ,
+        // имеющей координату x равной wall, за время time
+        // 0 - не достигнет
+        // 1 - достигнет
+        // 2 - аргументы функции заданы некорректно
+        // Допустимой погрешностью при сравнении переменных типа double считать 0.000001
+        // ------------------------------------------------------------------------------------
+        if(time>0.000001 && speed>0.000001){
+            if((Math.sqrt(wall*wall+vy*wall/vx*vy*wall/vx+vz*wall/vx*vz*wall/vx))/speed<=time){
+                return 1;
             }
-            return 0;
+            else if(Math.abs((Math.sqrt(wall*wall+vy*wall/vx*vy*wall/vx+vz*wall/vx*vz*wall/vx))/speed-time)<0.000001){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+        else{
+            return 2;
         }
     }
     @Override
