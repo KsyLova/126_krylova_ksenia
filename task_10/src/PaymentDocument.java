@@ -14,4 +14,12 @@ public class PaymentDocument {
     public int getSum() {
         return sum;
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }
