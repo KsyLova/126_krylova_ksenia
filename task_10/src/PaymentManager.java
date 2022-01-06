@@ -63,13 +63,18 @@ public class PaymentManager {
     public void deletePaymentDocumentsByNumberAndContractAndDate
             (int paymentDocumentNumber, String contractNumber, String date) {
 
+        int deletedCount = 0;
         List<PaymentDocument> paymentDocuments = findPaymentDocumentByContractNumber(contractNumber);
         for (int i = 0; i < paymentDocuments.size(); i++) {
             PaymentDocument paymentDocument = paymentDocuments.get(i);
             if (paymentDocument.getNumber() == paymentDocumentNumber && paymentDocument.getDate().equals(date)) {
                 Contract contract=getContractByNumber(contractNumber);
                 contract.getPayments().remove(i);
+                deletedCount++;
             }
+        }
+        if (deletedCount==0){
+            throw new RuntimeException("Не найдено ни одного платежа");
         }
     }
 
