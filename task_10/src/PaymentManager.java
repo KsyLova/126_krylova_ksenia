@@ -61,6 +61,18 @@ public class PaymentManager {
         }
     }
 
+    public int sumAllPaymentDocumentsCost(){
+        int sum=0;
+        for (int i=0; i<contracts.size();i++){
+            List<PaymentDocument> payments=contracts.get(i).getPayments();
+            for (int j=0;j<payments.size();j++){
+                PaymentDocument paymentDocument=payments.get(j);
+                sum=sum+paymentDocument.getSum();
+            }
+        }
+        return sum;
+    }
+
     private Contract getContractByNumber(String number) {
         for (int i = 0; i < contracts.size(); i++) {
             Contract contract = contracts.get(i);
