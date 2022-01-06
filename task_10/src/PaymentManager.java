@@ -15,6 +15,12 @@ public class PaymentManager {
     }
 
     public void addContract(Contract contract) {
+        for (int i=0;i<contracts.size();i++){
+            Contract con= contracts.get(i);
+            if (con.getNumber().equals(contract.getNumber())){
+                throw new RuntimeException("Контракт с номером"+con.getNumber()+"уже существует");
+            }
+        }
         contracts.add(contract);
     }
 

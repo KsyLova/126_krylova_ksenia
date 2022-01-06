@@ -4,13 +4,25 @@ import java.util.Map;
 
 public class PaymentManagerTest {
     @Test
-    public void addManager(){
+    public void addManager_success(){
         PaymentManager paymentManager= new PaymentManager();
 
         Contract contract=new Contract("1","20201231");
         paymentManager.addContract(contract);
 
         Assert.assertEquals(1,paymentManager.getContracts().size());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void addManager_fail_duplicateContractNumber(){
+        PaymentManager paymentManager = new PaymentManager();
+
+        Contract contract1 = new Contract("1", "20201231");
+        paymentManager.addContract(contract1);
+
+        Contract contract2 = new Contract("1", "20201231");
+        paymentManager.addContract(contract2);
+
     }
 
     @Test
