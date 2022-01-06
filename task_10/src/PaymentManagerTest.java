@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.Map;
 
 public class PaymentManagerTest {
     @Test
@@ -106,6 +107,13 @@ public class PaymentManagerTest {
         paymentManager.registerPaymentDocument("2",
                 new PaymentDocument(500, 222, "20220101", DocumentType.PAYMENT_ORDER));
 
-        Assert.assertEquals(1100,paymentManager.sumAllPaymentDocumentsCost());
+        Map<Contract, Integer> contractTotalSums = paymentManager.calculateContractTotalPaymentsDocumentsCost();
+
+        int totalFirstContractSum = contractTotalSums.get(contract1);
+        int totalSecondContractSum = contractTotalSums.get(contract2);
+
+        Assert.assertEquals(500, totalFirstContractSum);
+        Assert.assertEquals(600, totalSecondContractSum);
     }
+
 }

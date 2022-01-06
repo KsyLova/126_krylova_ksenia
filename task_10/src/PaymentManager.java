@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PaymentManager {
     private List<Contract> contracts;
@@ -61,16 +63,19 @@ public class PaymentManager {
         }
     }
 
-    public int sumAllPaymentDocumentsCost(){
-        int sum=0;
-        for (int i=0; i<contracts.size();i++){
-            List<PaymentDocument> payments=contracts.get(i).getPayments();
-            for (int j=0;j<payments.size();j++){
-                PaymentDocument paymentDocument=payments.get(j);
-                sum=sum+paymentDocument.getSum();
+    public Map<Contract, Integer> calculateContractTotalPaymentsDocumentsCost(){
+        Map<Contract, Integer> map = new HashMap<>();
+
+        for(int i=0; i<contracts.size(); i++){
+            int sum = 0;
+            List<PaymentDocument> payments = contracts.get(i).getPayments();
+            for(int j=0; j<payments.size(); j++){
+                PaymentDocument paymentDocument = payments.get(j);
+                sum = sum + paymentDocument.getSum();
             }
+            map.put(contracts.get(i), sum);
         }
-        return sum;
+        return map;
     }
 
     private Contract getContractByNumber(String number) {
