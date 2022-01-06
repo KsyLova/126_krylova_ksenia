@@ -5,6 +5,10 @@ public class PaymentDocument {
     private DocumentType type;
 
     public PaymentDocument(int sum, int number, String date, DocumentType type) {
+        if(sum <= 0){
+            throw new RuntimeException("Отрицательная или нулевая сумма плажета недопустами");
+        }
+
         this.sum = sum;
         this.number = number;
         this.date = date;

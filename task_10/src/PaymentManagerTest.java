@@ -74,6 +74,21 @@ public class PaymentManagerTest {
         paymentManager.registerPaymentDocument("1", paymentDocument2);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void registerPaymentDocument_fail_negativePaymentDocumentSum(){
+        PaymentManager paymentManager = new PaymentManager();
+
+        Contract contract = new Contract("1", "20201231");
+        paymentManager.addContract(contract);
+
+        PaymentDocument paymentDocument =
+                new PaymentDocument(-200, 111, "20220101", DocumentType.PAYMENT_ORDER);
+        paymentManager.registerPaymentDocument("1", paymentDocument);
+
+        paymentManager.registerPaymentDocument("1", paymentDocument);
+
+    }
+
     @Test
     public void findPaymentDocumentByContractNumber(){
         PaymentManager paymentManager = new PaymentManager();
