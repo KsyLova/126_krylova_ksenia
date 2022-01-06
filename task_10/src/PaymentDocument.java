@@ -22,4 +22,8 @@ public class PaymentDocument {
     public String getDate() {
         return date;
     }
+
+    public DocumentType getType() {
+        return type;
+    }
 }

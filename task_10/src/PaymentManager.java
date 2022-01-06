@@ -32,8 +32,17 @@ public class PaymentManager {
         for (int i = 0; i < contracts.size(); i++) {
             Contract contract = contracts.get(i);
             if (contract.getNumber().equals(contractNumber)) {
-                contract.getPayments().add(paymentDocument);
+                List<PaymentDocument>payments=contract.getPayments();
+                for (int j=0; j<payments.size();j++){
+                    PaymentDocument payment=payments.get(j);
+                    if (payment.getDate().equals(paymentDocument.getDate())
+                            && payment.getNumber()==payment.getNumber()
+                            && payment.getType().equals(paymentDocument.getType())){
+                        throw new RuntimeException("Дубликат платежного документа для договора с номером"+contractNumber);
+                    }
+                }
             }
+            contract.getPayments().add(paymentDocument);
         }
     }
 

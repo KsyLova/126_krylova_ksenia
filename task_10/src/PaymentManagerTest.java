@@ -35,7 +35,7 @@ public class PaymentManagerTest {
     }
 
     @Test
-    public void registerPaymentDocument(){
+    public void registerPaymentDocument_success(){
         PaymentManager paymentManager= new PaymentManager();
 
 
@@ -47,6 +47,23 @@ public class PaymentManagerTest {
         paymentManager.registerPaymentDocument("1",paymentDocument);
 
         Assert.assertEquals(1, contract.getPayments().size());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void registerPaymentDocument_fail_duplicatePaymentDocument(){
+        PaymentManager paymentManager = new PaymentManager();
+
+        Contract contract = new Contract("1", "20201231");
+        paymentManager.addContract(contract);
+
+        PaymentDocument paymentDocument1 =
+                new PaymentDocument(200, 111, "20220101", DocumentType.PAYMENT_ORDER);
+        paymentManager.registerPaymentDocument("1", paymentDocument1);
+
+        PaymentDocument paymentDocument2 =
+                new PaymentDocument(200, 111, "20220101", DocumentType.PAYMENT_ORDER);
+
+        paymentManager.registerPaymentDocument("1", paymentDocument2);
     }
 
     @Test
