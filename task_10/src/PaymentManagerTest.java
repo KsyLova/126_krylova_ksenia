@@ -115,5 +115,28 @@ public class PaymentManagerTest {
         Assert.assertEquals(500, totalFirstContractSum);
         Assert.assertEquals(600, totalSecondContractSum);
     }
+    @Test
+    public void findAllPaymentDocuments(){
+        PaymentManager paymentManager = new PaymentManager();
 
+        Contract contract1 = new Contract("1", "20201231");
+        paymentManager.addContract(contract1);
+
+        Contract contract2 = new Contract("2", "20201231");
+        paymentManager.addContract(contract2);
+
+        paymentManager.registerPaymentDocument("1",
+                new PaymentDocument(200, 111, "20220101", DocumentType.PAYMENT_ORDER));
+
+        paymentManager.registerPaymentDocument("1",
+                new PaymentDocument(300, 222, "20220101", DocumentType.PAYMENT_ORDER));
+
+        paymentManager.registerPaymentDocument("2",
+                new PaymentDocument(100, 333, "20220101", DocumentType.PAYMENT_ORDER));
+
+        paymentManager.registerPaymentDocument("2",
+                new PaymentDocument(500, 444, "20220101", DocumentType.PAYMENT_ORDER));
+
+        Assert.assertEquals(4, paymentManager.findAllPaymentDocuments().size());
+    }
 }

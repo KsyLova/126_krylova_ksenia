@@ -77,6 +77,16 @@ public class PaymentManager {
         }
         return map;
     }
+    public List<PaymentDocument> findAllPaymentDocuments(){
+        List<PaymentDocument> allPaymentDocuments = new ArrayList<>();
+
+        for(int i=0; i<contracts.size(); i++){
+            List<PaymentDocument> payments = contracts.get(i).getPayments();
+
+            allPaymentDocuments.addAll(payments);
+        }
+        return allPaymentDocuments;
+    }
 
     private Contract getContractByNumber(String number) {
         for (int i = 0; i < contracts.size(); i++) {
