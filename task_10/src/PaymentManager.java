@@ -24,4 +24,16 @@ public class PaymentManager {
             }
         }
     }
+
+    public List<PaymentDocument> findPaymentDocumentByContractNumber(String contractNumber){
+        List<PaymentDocument> paymentDocuments=new ArrayList<>();
+
+        for(int i=0; i<contracts.size(); i++) {
+            Contract contract = contracts.get(i);
+            if (contract.getNumber().equals(contractNumber)) {
+                paymentDocuments.addAll(contract.getPayments());
+            }
+        }
+        return paymentDocuments;
+    }
 }
