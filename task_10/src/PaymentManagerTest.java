@@ -34,6 +34,14 @@ public class PaymentManagerTest {
         paymentManager.addContract(contract1);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void addManager_fail_nullArgument(){
+        PaymentManager paymentManager = new PaymentManager();
+
+        Contract contract1 = new Contract(null, "20201231");
+        paymentManager.addContract(contract1);
+    }
+
     @Test
     public void registerPaymentDocument_success(){
         PaymentManager paymentManager= new PaymentManager();

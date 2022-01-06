@@ -15,62 +15,85 @@ public class PaymentManager {
     }
 
     public void addContract(Contract contract) {
-        if (contract.getNumber().isBlank()){
-            throw new RuntimeException("Контракт не может иметь пустой номер");
+        if(contract == null || contract.getNumber().isBlank()){
+            throw new RuntimeException("Контракт не может быть null или иметь пустой номер");
         }
 
-        for (int i=0;i<contracts.size();i++){
-            Contract con= contracts.get(i);
-            if (con.getNumber().equals(contract.getNumber())){
-                throw new RuntimeException("Контракт с номером"+con.getNumber()+"уже существует");
+        for(int i=0; i<contracts.size(); i++){
+            Contract con = contracts.get(i);
+            if(con.getNumber().equals(contract.getNumber())){
+                throw new RuntimeException("Контракт с номером " + con.getNumber() + " уже существует");
             }
         }
+
         contracts.add(contract);
     }
-
     public void registerPaymentDocument(String contractNumber, PaymentDocument paymentDocument) {
-        for (int i = 0; i < contracts.size(); i++) {
+        if(contractNumber == null || paymentDocument == null){
+            throw new RuntimeException("Номер контракта или платежный документ не могут быть null");
+        }
+
+        Contract currentContract = null;
+
+        for(int i=0; i<contracts.size(); i++){
             Contract contract = contracts.get(i);
-            if (contract.getNumber().equals(contractNumber)) {
-                List<PaymentDocument>payments=contract.getPayments();
-                for (int j=0; j<payments.size();j++){
-                    PaymentDocument payment=payments.get(j);
-                    if (payment.getDate().equals(paymentDocument.getDate())
-                            && payment.getNumber()==payment.getNumber()
+            if(contract.getNumber().equals(contractNumber)){
+                currentContract = contract;
+                List<PaymentDocument> payments = contract.getPayments();
+                for(int j=0; j<payments.size(); j++){
+                    PaymentDocument payment = payments.get(j);
+                    if(payment.getDate().equals(paymentDocument.getDate())
+                            && payment.getNumber() == paymentDocument.getNumber()
                             && payment.getType().equals(paymentDocument.getType())){
-                        throw new RuntimeException("Дубликат платежного документа для договора с номером"+contractNumber);
+                        throw new RuntimeException
+                                ("Дубликат платежного документа для договора с номером " + contractNumber);
                     }
                 }
             }
-            contract.getPayments().add(paymentDocument);
         }
+        if(currentContract == null){
+            throw new RuntimeException("Контракта с таким номером не существует");
+        }
+        currentContract.getPayments().add(paymentDocument);
     }
 
     public List<PaymentDocument> findPaymentDocumentByContractNumber(String contractNumber) {
+        if(contractNumber == null){
+            throw new RuntimeException("Номер контракта не может быть null");
+        }
+
         List<PaymentDocument> paymentDocuments = new ArrayList<>();
 
-        for (int i = 0; i < contracts.size(); i++) {
+        for(int i=0; i<contracts.size(); i++){
             Contract contract = contracts.get(i);
-            if (contract.getNumber().equals(contractNumber)) {
+            if(contract.getNumber() .equals(contractNumber)){
                 paymentDocuments.addAll(contract.getPayments());
             }
         }
+
         return paymentDocuments;
     }
 
     public int sumPaymentDocumentByContractNumber(String contractNumber) {
+        if(contractNumber == null){
+            throw new RuntimeException("Номер контракта не может быть null");
+        }
+
         List<PaymentDocument> paymentDocuments = findPaymentDocumentByContractNumber(contractNumber);
 
-
         int sum = 0;
-        for (int i = 0; i < paymentDocuments.size(); i++) {
+        for(int i=0; i<paymentDocuments.size(); i++){
             sum = sum + paymentDocuments.get(i).getSum();
         }
+
         return sum;
     }
 
     public void deletePaymentDocumentsByNumberAndContractAndDate
             (int paymentDocumentNumber, String contractNumber, String date) {
+        if(contractNumber == null || date == null){
+            throw new RuntimeException("Номер контракта или дата не могут быть null");
+        }
 
         int deletedCount = 0;
         List<PaymentDocument> paymentDocuments = findPaymentDocumentByContractNumber(contractNumber);
