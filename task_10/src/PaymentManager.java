@@ -36,4 +36,15 @@ public class PaymentManager {
         }
         return paymentDocuments;
     }
+
+    public int sumPaymentDocumentByContractNumber(String contractNumber) {
+        List<PaymentDocument> paymentDocuments = findPaymentDocumentByContractNumber(contractNumber);
+
+
+        int sum = 0;
+        for (int i = 0; i < paymentDocuments.size(); i++) {
+            sum = sum + paymentDocuments.get(i).getSum();
+        }
+        return sum;
+    }
 }

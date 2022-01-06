@@ -10,4 +10,8 @@ public class PaymentDocument {
         this.date = date;
         this.type = type;
     }
+
+    public int getSum() {
+        return sum;
+    }
 }
