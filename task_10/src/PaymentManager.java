@@ -15,6 +15,10 @@ public class PaymentManager {
     }
 
     public void addContract(Contract contract) {
+        if (contract.getNumber().isBlank()){
+            throw new RuntimeException("Контракт не может иметь пустой номер");
+        }
+
         for (int i=0;i<contracts.size();i++){
             Contract con= contracts.get(i);
             if (con.getNumber().equals(contract.getNumber())){

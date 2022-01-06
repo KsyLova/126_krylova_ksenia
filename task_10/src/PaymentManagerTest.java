@@ -22,7 +22,16 @@ public class PaymentManagerTest {
 
         Contract contract2 = new Contract("1", "20201231");
         paymentManager.addContract(contract2);
+    }
 
+
+    @Test(expected = RuntimeException.class)
+    public void addManager_fail_blankContractNumber(){
+        PaymentManager paymentManager = new PaymentManager();
+
+        Contract contract1 = new Contract("", "20201231");
+
+        paymentManager.addContract(contract1);
     }
 
     @Test
