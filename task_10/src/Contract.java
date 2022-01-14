@@ -9,6 +9,8 @@ public class Contract {
     public Contract(String number, String date) {
         this.number = number;
         this.date = date;
+
+
         this.payments=new ArrayList<>();
     }
 
