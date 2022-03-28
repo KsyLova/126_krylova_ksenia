@@ -1,0 +1,13 @@
+BubbleSort|5|for(int i = 0; i < data.length - sps; ++i) { -> for(int i = 1; i < data.length - sps; ++i) {|bubbleSort_ArrayWithSimilarElements_ArrayNotChange()
+BubbleSort|6|if(comparator.compare(data[i - 1], data[i]) < 0) { -> if(comparator.compare(data[i - 1], data[i]) > 0) {| public void bubbleSort_SortedArray_ArrayNotChange()
+BubbleSort|4|for(int sps = 1; sps < data.length - 1; ++sps) {-> for(int sps = 0; sps < data.length - 1; ++sps) {|bubbleSort_PushUnsortedArray_ElementsSortedCorrect()
+
+SelectionSort|5|int maxInd = 1;-> int maxInd = 0;|selectionSort_unSortedArray_ElementsSortedCorrect()
+SelectionSort|4|for(int sortedSize = 1; sortedSize < data.length - 1; ++sortedSize) {-> for(int sortedSize = 0; sortedSize < data.length - 1; ++sortedSize) {|selectionSort_UnsortedArrayWithTwoElements_ElementsSortedCorrect()
+SelectionSort|10|T tmp = data[data.length-sortedSize]; -> T tmp = data[data.length - 1-sortedSize]; |selectionSort_UnsortedArrayWithTwoElements_ElementsSortedCorrect()
+SelectionSort|11|data[data.length - sortedSize] = data[maxInd]; -> data[data.length -1- sortedSize] = data[maxInd];|selectionSort_UnsortedArrayWithTwoElements_ElementsSortedCorrect()
+SelectionSort|8|maxInd = sortedSize; -> maxInd = i;|selectionSort_UnsortedArray_ElementsSortedCorrect()
+
+InsertionSort|6| while (cur > 0 && comparator.compare(data[cur - 1], data[cur]) <= 0){ ->  while (cur > 0 && comparator.compare(data[cur - 1], data[cur]) > 0){|insertionSort_SortedArray_ArrayNotChange()
+InsertionSort|8| ++cur; -> --cur; |insertionSort_unSortedArray_ElementsSortedCorrect()
+InsertionSort|4| for (int sortedSize = 0; sortedSize < data.length; ++sortedSize) { -> for (int sortedSize = 1; sortedSize < data.length; ++sortedSize) { |#ошибка тестом не выявляется,но тратится больше времени на проверку
