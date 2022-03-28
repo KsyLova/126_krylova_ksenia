@@ -8,10 +8,12 @@ DoubleLinkedList.java|41| insertBefore(getTail(), data)-> insertBefore(getHead()
 DoubleLinkedList.java|44| insertBefore(getHead(), data)-> insertBefore(getTail(), data)|pushFront_pushTwoElements_HeadAndTailIsCorrect()
 DoubleLinkedList.java|47| node.getPrev().setPrev(node.getNext());" -> "node.getPrev().setNext(node.getNext())|remove_RemoveElementFromList_ConnectionNextAndPrevCorrect()
 DoubleLinkedList.java|48| node.getNext().setNext(node.getPrev());" -> "node.getNext().setPrev(node.getPrev())|remove_RemoveElementFromList_ConnectionNextAndPrevCorrect()
-DoubleLinkedList.java|55|"list.getHead().setNext(node);" -> "list.getHead().setPrev(node);"|insertListAfter_insertListOneInListTwoAfterSecondElement_SequenceOfElementsIsCorrect()
-DoubleLinkedList.java|56|"list.getTail().setPrev(node.getNext());" -> "list.getTail().setNext(node.getNext());"|insertListAfter_insertListOneInListTwoAfterSecondElement_SequenceOfElementsIsCorrect()
-DoubleLinkedList.java|63|"" -> "size+=list.getSize();"|insertListAfter_insertListOneInListTwoAfterSecondElement_SequenceOfElementsIsCorrect() #чтобы избежать выхода за границы, нужно добавить элементы,вставленных к размеру.
-
+DoubleLinkedList.java|55|"list.getHead().setNext(node);" -> "list.getHead().setPrev(node);"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect()
+DoubleLinkedList.java|56|"list.getTail().setPrev(node.getNext());" -> "list.getTail().setNext(node.getNext());"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect()
+DoubleLinkedList.java|63|"" -> "size+=list.getSize();"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect() #чтобы избежать выхода за границы, нужно добавить элементы,вставленных к размеру.
+DoubleLinkedList.java|68|list.getHead().setNext(node.getPrev()); -> list.getHead().setPrev(node.getPrev());|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect()
+DoubleLinkedList.java|69|list.getTail().setPrev(node); -> list.getTail().setNext(node);|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect()
+DoubleLinkedList.java|76| -> size+=list.getSize();|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect() #чтобы избежать выхода за границы, нужно добавить элементы,вставленных к размеру.
 
 
 
