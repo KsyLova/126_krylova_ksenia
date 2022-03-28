@@ -12,6 +12,19 @@ public class Task1_Tests extends Assert {
     }
 
     @Test
+    public void getNext_getDataOfNextAndPrevElements_DataCorrect(){
+        DoubleLinkedList.pushFront(30);
+        DoubleLinkedList.pushFront(10);
+        Node<Integer> elem = new Node (20, DoubleLinkedList.get(1), DoubleLinkedList.get(0));
+
+        Node<Integer> next = (Node<Integer>) elem.getNext();
+        Node<Integer> prev = (Node<Integer>) elem.getPrev();
+
+        assertEquals(30, next.getData().intValue());
+        assertEquals(10, prev.getData().intValue());
+    }
+
+    @Test
     public void emptyShouldReturnEmpty() {
         assertTrue(DoubleLinkedList.isEmpty());
     }
@@ -253,6 +266,13 @@ public class Task1_Tests extends Assert {
         } catch (IndexOutOfBoundsException e) {
             assertTrue(true);
         }
+    }
+
+    @Test
+    public void resize_setNewSize_SizeNotChange(){
+        DynamicArray<Integer> array = new DynamicArray<>(5);
+        array.resize(2);
+        assertEquals(5, array.getSize());
     }
 
     @Test
