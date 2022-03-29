@@ -1,4 +1,4 @@
-DoubleLinkedList.java|37| --size-> ++size|get_PushTwoElements_TheSecondElementIsCorrect()
+DoubleLinkedList.java|33| --size-> ++size|get_PushTwoElements_TheSecondElementIsCorrect()
 DoubleLinkedList.java|17|return dummy.getPrev() -> return dummy.getNext()|getHeadGetTail_PushTwoElements_HeadAndTailIsCorrect()
 DoubleLinkedList.java|20|return dummy.getNext() -> return dummy.getPrev()|getHeadGetTail_PushTwoElements_HeadAndTailIsCorrect()
 DoubleLinkedList.java|28| cur.getPrev()-> cur.getNext()|get_PushTwoElements_TheSecondElementIsCorrect()
