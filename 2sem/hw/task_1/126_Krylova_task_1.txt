@@ -1,39 +1,39 @@
-DoubleLinkedList.java|33| --size-> ++size|get_PushTwoElements_TheSecondElementIsCorrect()
-DoubleLinkedList.java|17|return dummy.getPrev() -> return dummy.getNext()|getHeadGetTail_PushTwoElements_HeadAndTailIsCorrect()
-DoubleLinkedList.java|20|return dummy.getNext() -> return dummy.getPrev()|getHeadGetTail_PushTwoElements_HeadAndTailIsCorrect()
-DoubleLinkedList.java|28| cur.getPrev()-> cur.getNext()|get_PushTwoElements_TheSecondElementIsCorrect()
-DoubleLinkedList.java|47| node.getPrev().setPrev(node.getNext());" -> "node.getPrev().setNext(node.getNext())|remove_RemoveElementFromList_ConnectionNextAndPrevCorrect()
-DoubleLinkedList.java|48| node.getNext().setNext(node.getPrev());" -> "node.getNext().setPrev(node.getPrev())|remove_RemoveElementFromList_ConnectionNextAndPrevCorrect()
-DoubleLinkedList.java|11|dummy==dummy -> dummy==dummy.getNext()|isEmptyWithNotEmptyListShouldReturnFalse()
-DoubleLinkedList.java|24|index >size -> index >=size|get_PushElementWithIndexEqualsSize_Exception()
-Node.java|13|this.next = prev; -> this.next = next;|getNext_getDataOfNextAndPrevElements_DataCorrect()
-Node.java|14|this.prev = next; -> this.prev = prev;|getNext_getDataOfNextAndPrevElements_DataCorrect()
-DoubleLinkedList.java|41| insertBefore(getTail(), data)-> insertBefore(getHead(), data)|pushFront_pushTwoElements_HeadAndTailIsCorrect()
-DoubleLinkedList.java|44| insertBefore(getHead(), data)-> insertBefore(getTail(), data)|pushFront_pushTwoElements_HeadAndTailIsCorrect()
-DoubleLinkedList.java|63|"" -> "size+=list.getSize();"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect() #чтобы избежать выхода за границы, нужно добавить элементы,вставленных к размеру.
-DoubleLinkedList.java|55|"list.getHead().setNext(node);" -> "list.getHead().setPrev(node);"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect()
-DoubleLinkedList.java|56|"list.getTail().setPrev(node.getNext());" -> "list.getTail().setNext(node.getNext());"|insertListBefore_insertListBeforeSecondElement_SequenceIsCorrect()
-DoubleLinkedList.java|76| -> size+=list.getSize();|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect() #чтобы избежать выхода за границы, нужно добавить элементы,вставленных к размеру.
-DoubleLinkedList.java|68|list.getHead().setNext(node.getPrev()); -> list.getHead().setPrev(node.getPrev());|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect()
-DoubleLinkedList.java|69|list.getTail().setPrev(node); -> list.getTail().setNext(node);|insertListBefore_insertListBeforeSecondElem_SequenceIsCorrect()
+
+Node.java|13|this.next = prev; -> this.next = next;|getNext_getDataOfNextElement_DataCorrect
+Node.java|14|this.prev = next; -> this.prev = prev;|getNext_getDataOfPrevElement_DataCorrect
 
 
+DoubleLinkedList.java|11|return dummy == dummy; -> return dummy.getNext() == dummy;|isEmpty_CheckList_isEmptyFalse
+DoubleLinkedList.java|17|return dummy.getPrev(); -> return dummy.getNext();|getHead_getHeadOfListWithTwoElements_HeadIsCorrect
+DoubleLinkedList.java|20|return dummy.getNext(); -> return dummy.getPrev();|getTail_getTailOfListWithTwoElements_TailIsCorrect
+DoubleLinkedList.java|24|if(index < 0 || index > size) -> if(index < 0 || index >= size)|get_getElementByIndexEqualsSize_getException
+DoubleLinkedList.java|28|cur = cur.getPrev(); -> cur = cur.getNext();|get_getElementByIndex_ElementIsCorrect
+DoubleLinkedList.java|33|--size; -> ++size;|insertAfter_InsertIntoEmptyList_sizeEqualsOne
+DoubleLinkedList.java|41|return insertBefore(getTail(), data); -> return insertBefore(getHead(), data);|pushFront_pushElements_HeadIsCorrect
+DoubleLinkedList.java|44|return insertAfter(getHead(), data); -> return insertAfter(getTail(), data);|pushBack_pushElements_TailIsCorrect
+DoubleLinkedList.java|47|node.getPrev().setPrev(node.getNext()); -> node.getPrev().setNext(node.getNext());|remove_removeElement_getNextIsCorrect
+DoubleLinkedList.java|48|node.getNext().setNext(node.getPrev()); -> node.getNext().setPrev(node.getPrev());|remove_removeElement_getPrevIsCorrect
+DoubleLinkedList.java|53|if(list.isEmpty()) -> if(list.isEmpty() || list == this)|insertListAfter_insertListIntoItself_ListIsNotEmpty
+DoubleLinkedList.java|55|list.getHead().setNext(node); -> list.getHead().setPrev(node);|insertListAfter_insertListAfterHead_PrevIsCorrect
+DoubleLinkedList.java|56|list.getTail().setPrev(node.getNext()); -> list.getTail().setNext(node.getNext());|insertListAfter_insertListAfterHead_NextIsCorrect
+DoubleLinkedList.java|64|if(list.isEmpty()) -> if(list.isEmpty() || list == this)|insertListBefore_insertListIntoItself_ListIsNotEmpty
+DoubleLinkedList.java|66|list.getHead().setNext(node.getPrev()); -> list.getHead().setPrev(node.getPrev());|insertListBefore_insertListBeforeTail_GetPrevIsCorrect
+DoubleLinkedList.java|67|list.getTail().setPrev(node); -> list.getTail().setNext(node);|insertListBefore_insertListBeforeSecondElem_SequenceOfElementsIsCorrect
 
 
-
-
-
-DynamicArray.java|11|"size = 1;" -> "size = 0;"|getSize_getSizeOfEmptyArray_SizeEqualsDefault()
-DynamicArray.java|21|"if(newSize > 0)" -> "if(newSize < 0)"|resize_setNewSize_NewSizeIsCorrect()
-DynamicArray.java|27|"newSize = size;" -> "size = newSize;"|resize_setNewSize_NewSizeIsCorrect()
-DynamicArray.java|23|if(newSize != capacity) { -> if(newSize > capacity) {|resize_setNewSize_SizeNotChange()
-DynamicArray.java|15|"data = new Object[capacity];" -> "data = new Object[size];"|createArray_CreateArrayWithSize_SizeIsCorrect()
-DynamicArray.java|30|"if(index < 0 || index > size)" -> "if(index < 0 || index >= size)"|get_getElementWithIndexEqualsSize_ThrowsException()
-DynamicArray.java|35|"if(index < 0 || index > size)" -> "if(index < 0 || index >= size)"|set_setElementWithIndexEqualsSize_ThrowsException()
-DynamicArray.java|40|"if(index < 0 || index > size)" -> "if(index < 0 || index >= size)"|insert_insertElementWithIndexEqualsSize_ThrowsException()
-DynamicArray.java|42|"if(capacity < size) {" -> "if(capacity <= size) {"|insert_InsertElements_ElementsAreCorrect()
-DynamicArray.java|49|"data[size] = value;" -> "data[index] = value;"|insert_insertElementToTheSecondPosition_ElemIsCorrect()
-DynamicArray.java|52|"if(capacity < size) {" -> "if(capacity <= size) {"| pushBack_pushBackElements_ElementsAreCorrect(){
-DynamicArray.java|56|"data[capacity] = value;" -> "data[size] = value;"| pushBack_pushBackElements_ElementsAreCorrect(){
-DynamicArray.java|60|"if(size < 0)" -> "if(size <= 0)"|popBack_popBackElementFromEmptyArray_ThrowsException()
-DynamicArray.java|66|"if(index < 0 || index > size)" -> "if(index < 0 || index >= size)"|remove_removeIndexOutOfBounds_ThrowsException()
+DynamicArray.java|11|size = 1; -> size = 0;|getSize_getSizeOfEmptyArray_SizeEqualsZero
+DynamicArray.java|15|data = new Object[capacity]; -> data = new Object[size];|get_getElementFromArray_ElementIsCorrect
+DynamicArray.java|21|if(newSize > 0) -> if(newSize < 0)|resize_setNewSizeWithNegativeValue_ThrowsException
+DynamicArray.java|27|newSize = size; -> size = newSize;|resize_setNewSizeWithPositiveValue_NewSizeIsCorrect
+DynamicArray.java|30|if(index < 0 || index > size) -> if(index < 0 || index >= size)|get_getElementWithIndexEqualsSize_ThrowsException
+DynamicArray.java|35|if(index < 0 || index > size) -> if(index < 0 || index >= size)|get_setElementWithIndexEqualsSize_ThrowsException
+DynamicArray.java|49|data[size] = value; -> data[index] = value;|insert_DynamicArray_insert_get
+DynamicArray.java|42|if(capacity < size) { -> if(capacity == size) {|insert_DynamicArray_insert_grow
+DynamicArray.java|43|data = Arrays.copyOf(data, size * 2); -> data = Arrays.copyOf(data, Math.max(1, size * 2));|insert_DynamicArray_insert_growZero
+DynamicArray.java|44|capacity = size * 2; -> capacity = Math.max(1, size * 2);|insert_DynamicArray_insert_growZeroCap
+DynamicArray.java|56|data[capacity] = value; -> data[size] = value;|pushBack_pushBackElement_ElemIsCorrect
+DynamicArray.java|52|if(capacity < size) { -> if(capacity == size) {|pushBack_pushToArrayWithSizeBackElement_ElemIsCorrect
+DynamicArray.java|53|data = Arrays.copyOf(data, size * 2); -> data = Arrays.copyOf(data, Math.max(1, size * 2));|pushBack_DynamicArray_pushBack_growZero
+DynamicArray.java|54|capacity = size * 2; -> capacity = Math.max(1, size * 2);|pushBack_DynamicArray_pushBack_growZeroCap
+DynamicArray.java|60|if(size < 0) -> if(size == 0)|popBack_popBackElementFromEmptyArray_ThrowsException
+DynamicArray.java|66|if(index < 0 || index > size) -> if(index < 0 || index >= size)|remove_removeElementWithIndexEqualsSize_ThrowsException

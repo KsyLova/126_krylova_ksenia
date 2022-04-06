@@ -8,7 +8,7 @@ public class DoubleLinkedList<T> {
     }
 
     public boolean isEmpty() {
-        return dummy == dummy.getNext();
+        return dummy.getNext() == dummy;
     }
     public int getSize() {
         return size;
@@ -20,7 +20,7 @@ public class DoubleLinkedList<T> {
         return dummy.getPrev();
     }
 
-    public ListNode<T> get(int index) {
+    public Node<T> get(int index) {
         if(index < 0 || index >= size)
             throw new IndexOutOfBoundsException("index out of bounds");
         ListNode<T> cur = getHead();
@@ -50,7 +50,7 @@ public class DoubleLinkedList<T> {
     }
 
     public void insertListAfter(ListNode<T> node, DoubleLinkedList<T> list) {
-        if(list.isEmpty())
+        if(list.isEmpty() || list == this)
             return;
         list.getHead().setPrev(node);
         list.getTail().setNext(node.getNext());
@@ -59,11 +59,9 @@ public class DoubleLinkedList<T> {
 
         list.dummy.setNext(list.dummy);
         list.dummy.setPrev(list.dummy);
-
-        size+=list.getSize();
     }
     public void insertListBefore(ListNode<T> node, DoubleLinkedList<T> list) {
-        if(list.isEmpty())
+        if(list.isEmpty() || list == this)
             return;
         list.getHead().setPrev(node.getPrev());
         list.getTail().setNext(node);
@@ -72,7 +70,5 @@ public class DoubleLinkedList<T> {
 
         list.dummy.setNext(list.dummy);
         list.dummy.setPrev(list.dummy);
-
-        size+=list.getSize();
     }
 }

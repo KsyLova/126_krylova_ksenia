@@ -20,11 +20,11 @@ public class DynamicArray<T> {
     public void resize(int newSize) {
         if(newSize < 0)
             throw new NegativeArraySizeException("Size can not be negative");
-        if(newSize > capacity) {
+        if(newSize != capacity) {
             capacity = newSize;
             data = Arrays.copyOf(data, newSize);
-            size=newSize;
         }
+        size = newSize;
     }
     public T get(int index) {
         if(index < 0 || index >= size)
@@ -37,11 +37,11 @@ public class DynamicArray<T> {
         data[index] = value;
     }
     public void insert(int index, T value) {
-        if(index < 0 || index >= size)
+        if(index < 0 || index > size)
             throw new IndexOutOfBoundsException("Index out of bounds");
         if(capacity == size) {
-            data = Arrays.copyOf(data, size * 2);
-            capacity = size * 2;
+            data = Arrays.copyOf(data, Math.max(1, size * 2));
+            capacity = Math.max(1, size * 2);
         }
         for(int i = size - 1; i >= index; --i)
             data[i + 1] = data[i];
@@ -50,8 +50,8 @@ public class DynamicArray<T> {
     }
     public void pushBack(T value) {
         if(capacity == size) {
-            data = Arrays.copyOf(data, size * 2);
-            capacity = size * 2;
+            data = Arrays.copyOf(data, Math.max(1, size * 2));
+            capacity = Math.max(1, size * 2);
         }
         data[size] = value;
         ++size;
