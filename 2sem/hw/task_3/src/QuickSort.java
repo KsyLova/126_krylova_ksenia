@@ -21,12 +21,12 @@ public class QuickSort<T> implements Sort<T> {
         while (left < right) {
             while (left <= right && comparator.compare(data[left], data[baseElem]) <= 0)
                 left++;
-            swap(data, left - 1, baseElem);
-            baseElem = left - 1;
+            swap(data, left-1, baseElem);
+            baseElem = left-1;
             while (right > left && comparator.compare(data[right], data[baseElem]) > 0)
                 right--;
             if(left < right)
-                swap(data, left, right);
+                swap(data, left + 1, right);
         }
         return baseElem;
     }
