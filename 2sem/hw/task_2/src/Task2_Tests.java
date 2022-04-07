@@ -1,7 +1,7 @@
-import org.junit.*;
 import org.junit.Assert;
+import org.junit.*;
 
-public class Task2_Tests extends Assert {
+public class Task2_Tests extends Assert{
     class TestComparator implements MyComparator<Integer> {
         @Override
         public int compare(Integer first, Integer second) {
@@ -9,85 +9,99 @@ public class Task2_Tests extends Assert {
         }
     }
 
-    private boolean isSorted(Integer[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
-            if (data[i] > data[i + 1])
-                return false;
-        }
-        return true;
+    @Test
+    public void BubbleSort_BubbleSortAlreadySortedArray_ArrayNotChange(){
+        BubbleSort<Integer> bs = new BubbleSort<>();
+        Integer[] data = {1, 2, 3};
+        bs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
     }
 
     @Test
-    public void bubbleSort_ArrayWithSimilarElements_ArrayNotChange() {
-        Integer[] data = {1, 1, 1};
+    public void BubbleSort_BubbleSortUnsortedArray_ArrayIsCorrect(){
         BubbleSort<Integer> bs = new BubbleSort<>();
+        Integer[] data = {1, 3, 2};
+        bs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void BubbleSort_BubbleSortSameElements_ArrayIsCorrect(){
+        BubbleSort<Integer> bs = new BubbleSort<>();
+        Integer[] data = {1, 1, 1};
         bs.sort(data, new TestComparator());
         assertArrayEquals(new Integer[]{1, 1, 1}, data);
     }
 
     @Test
-    public void bubbleSort_SortedArray_ArrayNotChange(){
+    public void BubbleSort_BubbleSortNegativeDigitsWithPositive_ArrayIsCorrect(){
         BubbleSort<Integer> bs = new BubbleSort<>();
-        Integer[] data={1,2,3};
+        Integer[] data = {1, 0, -1};
         bs.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2,3}, data);
+        assertArrayEquals(new Integer[]{-1, 0, 1}, data);
     }
 
     @Test
-    public void bubbleSort_PushUnsortedArray_ElementsSortedCorrect(){
-        BubbleSort<Integer> bs = new BubbleSort<>();
-        Integer[] data={1,4,3,2};
-        bs.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2,3,4}, data);
-    }
-
-    @Test
-    public void bubbleSort_InvertedArray_ElementsSortedCorrect(){
-        BubbleSort<Integer> bs = new BubbleSort<>();
-        Integer[] data={4,3,2,1};
-        bs.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2,3,4}, data);
-    }
-
-
-
-
-    @Test
-    public void selectionSort_unSortedArray_ElementsSortedCorrect(){
-        SelectionSort<Integer> ss = new SelectionSort<>();
-        Integer[] data={5,4,2};
-        ss.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{2,4,5}, data);
-    }
-    @Test
-    public void selectionSort_UnsortedArrayWithTwoElements_ElementsSortedCorrect(){
-        SelectionSort<Integer> ss = new SelectionSort<>();
-        Integer[] data={2,1};
-        ss.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2}, data);
-    }
-    @Test
-    public void selectionSort_UnsortedArray_ElementsSortedCorrect(){
-        SelectionSort<Integer> ss = new SelectionSort<>();
-        Integer[] data={4,1,3,2};
-        ss.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2,3,4}, data);
-    }
-
-
-
-    @Test
-    public void insertionSort_SortedArray_ArrayNotChange(){
+    public void InsertionSort_InsertionSortAlreadySortedArray_ArrayIsCorrect(){
         InsertionSort<Integer> is = new InsertionSort<>();
-        Integer[] data={1,2};
+        Integer[] data = {1, 2, 3};
         is.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2}, data);
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
     }
+
     @Test
-    public void insertionSort_unSortedArray_ElementsSortedCorrect(){
+    public void InsertionSort_InsertionSortArray_ArrayIsCorrect(){
         InsertionSort<Integer> is = new InsertionSort<>();
-        Integer[] data={2,1};
+        Integer[] data = {1, 3, 2};
         is.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2}, data);
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void InsertionSort_InsertionSortSameElements_ArrayIsCorrect(){
+        InsertionSort<Integer> is = new InsertionSort<>();
+        Integer[] data = {1, 1, 1};
+        is.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 1, 1}, data);
+    }
+
+    @Test
+    public void InsertionSort_InsertionSortNegativeDigitsWithPositive_ArrayIsCorrect(){
+        InsertionSort<Integer> is = new InsertionSort<>();
+        Integer[] data = {1, 0, -1};
+        is.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{-1, 0, 1}, data);
+    }
+
+    @Test
+    public void SelectionSort_SelectionSortAlreadySortedArray_ArrayIsCorrect(){
+        SelectionSort<Integer> ss = new SelectionSort<>();
+        Integer[] data = {1, 2, 3};
+        ss.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void SelectionSort_SelectionSortArray_ArrayIsCorrect(){
+        SelectionSort<Integer> ss = new SelectionSort<>();
+        Integer[] data = {1, 3, 2};
+        ss.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void SelectionSort_SelectionSortSameElements_ArrayIsCorrect(){
+        SelectionSort<Integer> ss = new SelectionSort<>();
+        Integer[] data = {1, 1, 1};
+        ss.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 1, 1}, data);
+    }
+
+    @Test
+    public void SelectionSort_SelectionSortNegativeDigitsWithNormal_DataIsCorrect(){
+        SelectionSort<Integer> ss = new SelectionSort<>();
+        Integer[] data = {1, 0, -1};
+        ss.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{-1, 0, 1}, data);
     }
 }
